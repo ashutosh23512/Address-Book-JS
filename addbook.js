@@ -165,11 +165,18 @@ if(flag==0)
 console.log("Contact not found")
 }
 
+function getCount(){
+    return addressBookArray.reduce(count=> count+1,0);
+}
+
 function menu()
 {   const prompt=require('prompt-sync')();
-    let x=prompt("Press 1 to add new contact or Press 2 to edit contact or Press 3 to delete contact or Press 4 to exit ")
+    let x=prompt("Press 1 to add new contact or Press 2 to edit contact or Press 3 to delete contact or Press 4 to count contacts or Press 5 to exit ")
     return x
 }
+
+
+
 
 console.log("Welcome to Address Book")
 console.log("------------------------")
@@ -197,10 +204,13 @@ case "3":
     const prompt1=require('prompt-sync')();
     let name1=prompt1("Enter name of the contact to be deleted: ");
     deleteContact(name1)
-    
+
     break
-    
-case "4":
+ case "4":
+        console.log(getCount())
+        
+    break
+case "5":
     console.log("Good Bye")
     return
 default:
