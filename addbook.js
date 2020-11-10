@@ -1,5 +1,5 @@
 class AddressBookData{
-
+   
     //constructor
     constructor(...params){
         this.fName=params[0];
@@ -104,14 +104,82 @@ class AddressBookData{
         return "FirstName = " + this.fName + ", LastName = " + this.lName + ", Address = " + this.address + ", City = " + this.city + ", State = " + this.state + ", Zipcode = " + this.zip + ", PhoneNo = " + this.phNo + ", Email = " + this.email
     }
 }
+
+function updateContact(name)
+{
+    let flag=0;
+for(let i=0; i<addressBookArray.length; i++)
+{
+    if(addressBookArray[i].fName==name)
+    {
+        const prompt=require('prompt-sync')();
+        let fname=prompt("Enter New First Name")
+        addressBookArray[i].fName=fname
+
+        let lname=prompt("Enter New Last Name")
+        addressBookArray[i].lName=lname
+
+        let address=prompt("Enter New Address ")
+        addressBookArray[i].address=address
+
+        let city=prompt("Enter New City")
+        addressBookArray[i].city=city
+
+        let state=prompt("Enter New State")
+        addressBookArray[i].state=state
+
+        let zip=prompt("Enter New Zip")
+        addressBookArray[i].zip=zip
+
+        let phone=prompt("Enter New Phone Number")
+        addressBookArray[i].phNo=phone
+
+        let email=prompt("Enter New Email")
+        addressBookArray[i].email=email
+
+        console.log(addressBookArray)
+        flag=1;
+        break;
+    }
+    
+}
+if(flag==0)
+console.log("Contact not found")
+}
+
+function menu()
+{   const prompt=require('prompt-sync')();
+    let x=prompt("Press 1 to add new contact or Press 2 to edit contact or Press 3 to exit: ")
+    return x
+}
+
+console.log("Welcome to Address Book")
+console.log("------------------------")
 let addressBookArray = new Array()
-try{
-let addressBookData = new AddressBookData("Ashutosh", "Aggarwal", "Abcstreet", "Amritsar", "Punjab", "143001", "91 9888888888", "ashutosh@gmail.com");
-let addressBookData1 = new AddressBookData("Test", "Test", "Abcstreet", "Abccity", "Abcstate", "143001", "91 9888888888", "test@gmail.com");
-addressBookArray.push(addressBookData)
-addressBookArray.push(addressBookData1)
-}
-catch(e){
-    console.log(e);
-}
-console.log(addressBookArray)
+while(true){
+let option=menu()
+switch(option)
+{
+case "1":
+    let addressBookData = new AddressBookData("Ashutosh", "Aggarwal", "Abcstreet", "Amritsar", "Punjab", "143001", "91 9888888888", "ashutosh@gmail.com");
+    let addressBookData1 = new AddressBookData("Test", "Test", "Abcstreet", "Abccity", "Abcstate", "143001", "91 9888888888", "test@gmail.com");
+    addressBookArray.push(addressBookData)
+    addressBookArray.push(addressBookData1)
+    console.log(addressBookArray)
+    
+    break
+case "2":
+    const prompt=require('prompt-sync')();
+    let name=prompt("Enter name of the contact to be updated: ");
+    updateContact(name);
+    console.log(addressBookArray)
+    break
+
+case "3":
+    console.log("Good Bye")
+    return
+default:
+    console.log("Enter valid option")
+
+}}
+
