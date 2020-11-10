@@ -186,9 +186,16 @@ function addDetails(contact){
     }
 }
 
+function getPersonByCity(city){
+    return addressBookArray.filter(contact=> contact.city==city);
+}
+function getPersonByState(state){
+    return addressBookArray.filter(contact=> contact.state==state);
+}
+
 function menu()
 {   const prompt=require('prompt-sync')();
-    let x=prompt("Press 1 to add new contact or Press 2 to edit contact or Press 3 to delete contact or Press 4 to count contacts or Press 5 to exit ")
+    let x=prompt("Press 1 to add new contact or Press 2 to edit contact or Press 3 to delete contact or Press 4 to count contacts or Press 5 to find person by city or Press 6 to find person by state or Press 7 to exit ")
     return x
 }
 
@@ -228,6 +235,18 @@ case "3":
 
     break
 case "5":
+    const prompt2=require('prompt-sync')();
+    let city=prompt2("Enter name of the city ");
+        console.log(getPersonByCity(city))
+
+        break
+case "6":
+    const prompt3=require('prompt-sync')();
+    let state=prompt3("Enter name of the state ");
+    console.log(getPersonByState(state))
+
+        break
+case "7":
     console.log("Good Bye")
     return
 default:
