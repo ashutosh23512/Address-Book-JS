@@ -203,6 +203,10 @@ function personCountByState(state){
     return listState.reduce(count=> count+1,0);
 }
 
+function sortByPersonFirstName(){
+    addressBookArray.sort((person1, person2) => person1.fName.localeCompare(person2.fName));
+}
+
 function menu()
 {   const prompt=require('prompt-sync')();
     let x=prompt("Press 1 to add new contact or Press 2 to edit contact or Press 3 to delete contact or Press 4 to count contacts or Press 5 to find person by city or Press 6 to find person by state or Press 7 to exit ")
@@ -222,9 +226,12 @@ switch(option)
 case "1":
     let addressBookData = new AddressBookData("Ashutosh", "Aggarwal", "Abcstreet", "Amritsar", "Punjab", "143001", "91 9888888888", "ashutosh@gmail.com");
     let addressBookData1 = new AddressBookData("Test", "Test", "Abcstreet", "Abccity", "Abcstate", "143001", "91 9888888888", "test@gmail.com");
-    addDetails(addressBookData)
     addDetails(addressBookData1)
+    addDetails(addressBookData)
     console.log(addressBookArray)
+    sortByPersonFirstName()
+    console.log(addressBookArray)
+
     
     break
 case "2":
