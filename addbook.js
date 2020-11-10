@@ -138,8 +138,26 @@ for(let i=0; i<addressBookArray.length; i++)
         addressBookArray[i].email=email
 
         console.log(addressBookArray)
-        flag=1;
-        break;
+        flag=1
+        return
+    }
+    
+}
+if(flag==0)
+console.log("Contact not found")
+}
+
+function deleteContact(name)
+{
+    let flag=0;
+for(let i=0; i<addressBookArray.length; i++)
+{
+    if(addressBookArray[i].fName==name)
+    {
+        addressBookArray.splice(i,1);
+        console.log(addressBookArray)
+        flag=1
+        return
     }
     
 }
@@ -149,7 +167,7 @@ console.log("Contact not found")
 
 function menu()
 {   const prompt=require('prompt-sync')();
-    let x=prompt("Press 1 to add new contact or Press 2 to edit contact or Press 3 to exit: ")
+    let x=prompt("Press 1 to add new contact or Press 2 to edit contact or Press 3 to delete contact or Press 4 to exit ")
     return x
 }
 
@@ -172,10 +190,17 @@ case "2":
     const prompt=require('prompt-sync')();
     let name=prompt("Enter name of the contact to be updated: ");
     updateContact(name);
-    console.log(addressBookArray)
-    break
+   
 
+    break
 case "3":
+    const prompt1=require('prompt-sync')();
+    let name1=prompt1("Enter name of the contact to be deleted: ");
+    deleteContact(name1)
+    
+    break
+    
+case "4":
     console.log("Good Bye")
     return
 default:
