@@ -194,6 +194,15 @@ function getPersonByState(fName,state){
     return addressBookArray.filter(contact=>contact.fName==fName &&  contact.state==state);
 }
 
+function personCountByCity(city){
+    listCity=addressBookArray.filter(contact=> contact.city==city);
+    return listCity.reduce(count=> count+1,0);
+}
+function personCountByState(state){
+    listState=addressBookArray.filter(contact=> contact.state==state);
+    return listState.reduce(count=> count+1,0);
+}
+
 function menu()
 {   const prompt=require('prompt-sync')();
     let x=prompt("Press 1 to add new contact or Press 2 to edit contact or Press 3 to delete contact or Press 4 to count contacts or Press 5 to find person by city or Press 6 to find person by state or Press 7 to exit ")
@@ -240,6 +249,7 @@ case "5":
     let city=prompt2("Enter name of the city ");
     let fname=prompt2("Enter First Name")
         console.log(getPersonByCity(fname,city))
+        console.log(personCountByCity(city))
 
         break
 case "6":
@@ -247,6 +257,7 @@ case "6":
     let state=prompt3("Enter name of the state ");
     let fname1=prompt3("Enter First Name")
     console.log(getPersonByState(fname1,state))
+    console.log(personCountByState(state))
 
         break
 case "7":
