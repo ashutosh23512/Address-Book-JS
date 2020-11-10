@@ -186,11 +186,12 @@ function addDetails(contact){
     }
 }
 
-function getPersonByCity(city){
-    return addressBookArray.filter(contact=> contact.city==city);
+function getPersonByCity(fName,city){
+    return addressBookArray.filter(contact=> contact.fName==fName && contact.city==city);
+    
 }
-function getPersonByState(state){
-    return addressBookArray.filter(contact=> contact.state==state);
+function getPersonByState(fName,state){
+    return addressBookArray.filter(contact=>contact.fName==fName &&  contact.state==state);
 }
 
 function menu()
@@ -237,13 +238,15 @@ case "3":
 case "5":
     const prompt2=require('prompt-sync')();
     let city=prompt2("Enter name of the city ");
-        console.log(getPersonByCity(city))
+    let fname=prompt2("Enter First Name")
+        console.log(getPersonByCity(fname,city))
 
         break
 case "6":
     const prompt3=require('prompt-sync')();
     let state=prompt3("Enter name of the state ");
-    console.log(getPersonByState(state))
+    let fname1=prompt3("Enter First Name")
+    console.log(getPersonByState(fname1,state))
 
         break
 case "7":
