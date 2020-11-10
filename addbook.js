@@ -168,6 +168,23 @@ console.log("Contact not found")
 function getCount(){
     return addressBookArray.reduce(count=> count+1,0);
 }
+function checkExists(fName, lName){
+    let contactDetails;
+    addressBookArray.forEach(contact => {
+        if(contact.fName == fName && contact.lName == lName){
+            contactDetails = contact;
+        }
+    });
+    return contactDetails;
+}
+function addDetails(contact){
+    if(checkExists(contact.fName,contact.lName) == null){
+        addressBookArray.push(contact);
+    }
+    else{
+        throw "Already Exists!!";
+    }
+}
 
 function menu()
 {   const prompt=require('prompt-sync')();
@@ -188,8 +205,8 @@ switch(option)
 case "1":
     let addressBookData = new AddressBookData("Ashutosh", "Aggarwal", "Abcstreet", "Amritsar", "Punjab", "143001", "91 9888888888", "ashutosh@gmail.com");
     let addressBookData1 = new AddressBookData("Test", "Test", "Abcstreet", "Abccity", "Abcstate", "143001", "91 9888888888", "test@gmail.com");
-    addressBookArray.push(addressBookData)
-    addressBookArray.push(addressBookData1)
+    addDetails(addressBookData)
+    addDetails(addressBookData1)
     console.log(addressBookArray)
     
     break
@@ -208,7 +225,7 @@ case "3":
     break
  case "4":
         console.log(getCount())
-        
+
     break
 case "5":
     console.log("Good Bye")
